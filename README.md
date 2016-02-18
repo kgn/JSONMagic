@@ -61,7 +61,7 @@ let json = JSONMagic(data: jsonData!)
 json.get("user").get("name").value // David Keegan
 json.get("user").get("age").value // 30
 
-let twitter = json.get("user").get("accounts").first()
+let twitter = json.get("user").get("accounts").first
 twitter.get("name").value // twitter
 twitter.get("user").value // iamkgn
 
@@ -69,7 +69,7 @@ let dribbble = json.get("user").get("accounts").get(1)
 dribbble.get("name").value // dribbble
 dribbble.get("user").value // kgn
 
-let github = json.get("user").get("accounts").last()
+let github = json.get("user").get("accounts").last
 github.get("name").value // github
 github.get("user").value // kgn
 
