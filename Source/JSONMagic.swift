@@ -17,8 +17,12 @@ public class JSONMagic {
     }
 
     /// Create an instance with json data
-    public convenience init(data: NSData) {
-        self.init(try? NSJSONSerialization.JSONObjectWithData(data, options: []))
+    public convenience init(data: NSData?) {
+        if data != nil {
+            self.init(try? NSJSONSerialization.JSONObjectWithData(data!, options: []))
+        } else {
+            self.init()
+        }
     }
 
     /// Get the item with the key of the dictionary
