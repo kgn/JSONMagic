@@ -26,35 +26,41 @@ public class JSONMagic {
     }
 
     /// Get the item with the key of the dictionary
-    public func get(key: String) -> JSONMagic {
-        if let subData = self.value as? NSDictionary {
+    public func get<Key: Hashable>(key: Key) -> JSONMagic {
+        if let subData = self.value as? [Key: AnyObject] {
             return JSONMagic(subData[key])
         }
         return JSONMagic()
     }
 
+    /// Wraps `get(key)` allowing you to use `[Key]`.
+    public subscript(key: Key) -> JSONMagic {
+        return self.get(key)
+    }
+
     /// Get the item at the index of the array
+    /// Negative values work back from teh length of the array,
+    /// -1 for example will return the last objexct, -2 the second to last
     public func get(index: Int) -> JSONMagic {
-        if let subData = self.value as? NSArray where index < subData.count {
+        if let subData = self.value as? [AnyObject] where index < subData.count {
             return JSONMagic(subData[index])
         }
         return JSONMagic()
     }
 
+    /// Wraps `get(index)` allowing you to use `[Int]`.
+    public subscript(index: Int) -> JSONMagic {
+        return self.get(index)
+    }
+
     /// Get the first item of the array
     public var first: JSONMagic {
-        if let subData = self.value as? NSArray {
-            return JSONMagic(subData[0])
-        }
-        return JSONMagic()
+        return self.get(0)
     }
 
     /// Get the last item of the array
     public var last: JSONMagic {
-        if let subData = self.value as? NSArray {
-            return JSONMagic(subData[subData.count-1])
-        }
-        return JSONMagic()
+        return self.get(-1)
     }
     
 }
