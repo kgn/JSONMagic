@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		836E699B1BCCD3B40089EAB1 /* JSONMagic.h in Headers */ = {isa = PBXBuildFile; fileRef = 836E699A1BCCD3B40089EAB1 /* JSONMagic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		836E69A21BCCD3B40089EAB1 /* JSONMagic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836E69971BCCD3B40089EAB1 /* JSONMagic.framework */; };
+		836E69A71BCCD3B40089EAB1 /* JSONMagicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69A61BCCD3B40089EAB1 /* JSONMagicTests.swift */; };
+		837EB4981C75ACED00B1CF5C /* JSONMagic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837EB4971C75ACED00B1CF5C /* JSONMagic.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		836E69A31BCCD3B40089EAB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 836E698E1BCCD3B30089EAB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 836E69961BCCD3B40089EAB1;
+			remoteInfo = JSONMagic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		836E69971BCCD3B40089EAB1 /* JSONMagic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONMagic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		836E699A1BCCD3B40089EAB1 /* JSONMagic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONMagic.h; sourceTree = "<group>"; };
+		836E699C1BCCD3B40089EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		836E69A11BCCD3B40089EAB1 /* JSONMagicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONMagicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		836E69A61BCCD3B40089EAB1 /* JSONMagicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMagicTests.swift; sourceTree = "<group>"; };
+		836E69A81BCCD3B40089EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		837EB4971C75ACED00B1CF5C /* JSONMagic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONMagic.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		836E69931BCCD3B40089EAB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836E699E1BCCD3B40089EAB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836E69A21BCCD3B40089EAB1 /* JSONMagic.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		836E698D1BCCD3B30089EAB1 = {
+			isa = PBXGroup;
+			children = (
+				836E69991BCCD3B40089EAB1 /* Source */,
+				836E69A51BCCD3B40089EAB1 /* Tests */,
+				836E69981BCCD3B40089EAB1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		836E69981BCCD3B40089EAB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				836E69971BCCD3B40089EAB1 /* JSONMagic.framework */,
+				836E69A11BCCD3B40089EAB1 /* JSONMagicTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		836E69991BCCD3B40089EAB1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				837EB4971C75ACED00B1CF5C /* JSONMagic.swift */,
+				836E699A1BCCD3B40089EAB1 /* JSONMagic.h */,
+				836E699C1BCCD3B40089EAB1 /* Info.plist */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		836E69A51BCCD3B40089EAB1 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				836E69A61BCCD3B40089EAB1 /* JSONMagicTests.swift */,
+				836E69A81BCCD3B40089EAB1 /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		836E69941BCCD3B40089EAB1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836E699B1BCCD3B40089EAB1 /* JSONMagic.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		836E69961BCCD3B40089EAB1 /* JSONMagic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836E69AB1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "JSONMagic" */;
+			buildPhases = (
+				836E69921BCCD3B40089EAB1 /* Sources */,
+				836E69931BCCD3B40089EAB1 /* Frameworks */,
+				836E69941BCCD3B40089EAB1 /* Headers */,
+				836E69951BCCD3B40089EAB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JSONMagic;
+			productName = JSONMagic;
+			productReference = 836E69971BCCD3B40089EAB1 /* JSONMagic.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		836E69A01BCCD3B40089EAB1 /* JSONMagicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836E69AE1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "JSONMagicTests" */;
+			buildPhases = (
+				836E699D1BCCD3B40089EAB1 /* Sources */,
+				836E699E1BCCD3B40089EAB1 /* Frameworks */,
+				836E699F1BCCD3B40089EAB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				836E69A41BCCD3B40089EAB1 /* PBXTargetDependency */,
+			);
+			name = JSONMagicTests;
+			productName = JSONMagicTests;
+			productReference = 836E69A11BCCD3B40089EAB1 /* JSONMagicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		836E698E1BCCD3B30089EAB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "David Keegan";
+				TargetAttributes = {
+					836E69961BCCD3B40089EAB1 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					836E69A01BCCD3B40089EAB1 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 836E69911BCCD3B30089EAB1 /* Build configuration list for PBXProject "JSONMagic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 836E698D1BCCD3B30089EAB1;
+			productRefGroup = 836E69981BCCD3B40089EAB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				836E69961BCCD3B40089EAB1 /* JSONMagic */,
+				836E69A01BCCD3B40089EAB1 /* JSONMagicTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		836E69951BCCD3B40089EAB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836E699F1BCCD3B40089EAB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		836E69921BCCD3B40089EAB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837EB4981C75ACED00B1CF5C /* JSONMagic.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		836E699D1BCCD3B40089EAB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836E69A71BCCD3B40089EAB1 /* JSONMagicTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		836E69A41BCCD3B40089EAB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 836E69961BCCD3B40089EAB1 /* JSONMagic */;
+			targetProxy = 836E69A31BCCD3B40089EAB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		836E69A91BCCD3B40089EAB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		836E69AA1BCCD3B40089EAB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		836E69AC1BCCD3B40089EAB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.JSONMagic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		836E69AD1BCCD3B40089EAB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.JSONMagic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		836E69AF1BCCD3B40089EAB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.JSONMagicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		836E69B01BCCD3B40089EAB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.JSONMagicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		836E69911BCCD3B30089EAB1 /* Build configuration list for PBXProject "JSONMagic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836E69A91BCCD3B40089EAB1 /* Debug */,
+				836E69AA1BCCD3B40089EAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		836E69AB1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "JSONMagic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836E69AC1BCCD3B40089EAB1 /* Debug */,
+				836E69AD1BCCD3B40089EAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		836E69AE1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "JSONMagicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				836E69AF1BCCD3B40089EAB1 /* Debug */,
+				836E69B01BCCD3B40089EAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 836E698E1BCCD3B30089EAB1 /* Project object */;
+}
