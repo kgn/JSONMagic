@@ -31,33 +31,66 @@ github "kgn/JSONMagic"
 pod 'JSONMagic'
 ```
 
-## Example
+## Examples
 
-``` Swift
-let data = [
-    "user": [
+Lets say you get a JSON user profile like this from your server:
+
+``` json
+{
+    "user": {
         "name": "David Keegan",
         "age": 30,
         "accounts": [
-            [
+            {
                 "name": "twitter",
                 "user": "iamkgn"
-            ],
-            [
+            },
+            {
                 "name": "dribbble",
                 "user": "kgn"
-            ],
-            [
+            },
+            {
                 "name": "github",
                 "user": "kgn"
-            ]
+            }
         ]
-    ]
-]
+    }
+}
+```
 
-let jsonData = try? NSJSONSerialization.dataWithJSONObject(data, options: [])
+Parsing this can take a bunch of nested if statements in Swift to cast things to the right type in order to traverse down the data tree.
 
-let json = JSONMagic(data: jsonData)
+### Before
+
+``` Swift
+let twitterUser: String?
+if let data = serverResponse {
+    if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
+        if let user = json?["user"] as? [String: AnyObject] {
+            if let accounts = user["accounts"] as? [AnyObject] {
+                if let twitter = accounts.first as? [String: AnyObject] {
+                    twitterUser = twitter["user"] as? String
+                }
+            }
+        }
+    }
+}
+```
+
+### After
+
+``` Swift
+let twitterUser = JSONMagic(data: serverResponse).get("user").get("accounts").first.get("user").value as? String
+```
+
+`JSONMagic` handles all of this for you with method chaining. So you’re always working with a magical wrapper `JSONMagic` object that you can chain as long as you want, then just call `value` at the end to get the ending value and cast that to the final type you want.
+
+It’s super *loosie goosie* so doesn’t care about `nil` values going in, or anywhere in the chain.
+
+### Some more examples
+
+``` Swift
+let json = JSONMagic(data: serverResponse)
 
 json.get("user").get("name").value // David Keegan
 json.get("user").get("age").value // 30
