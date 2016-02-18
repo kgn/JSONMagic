@@ -56,7 +56,8 @@ let data = [
 ]
 
 let jsonData = try? NSJSONSerialization.dataWithJSONObject(data, options: [])
-let json = JSONMagic(data: jsonData!)
+
+let json = JSONMagic(data: jsonData)
 
 json.get("user").get("name").value // David Keegan
 json.get("user").get("age").value // 30
