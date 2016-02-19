@@ -6,6 +6,8 @@
 //  Copyright © David Keegan. All rights reserved.
 //
 
+// TODO: implment Equatable
+
 public class JSONMagic {
 
     /// The value of the item
@@ -24,34 +26,53 @@ public class JSONMagic {
             self.init()
         }
     }
+    
+}
 
-    /// Get the item with the key of the dictionary
-    public func get<Key: Hashable>(key: Key) -> JSONMagic {
-        if let subData = self.value as? [Key: AnyObject] {
-            return JSONMagic(subData[key])
-        }
-        return JSONMagic()
-    }
+extension JSONMagic {
 
-    /// Wraps `get(key)` allowing you to use `[Key]`.
-    public subscript(key: Key) -> JSONMagic {
-        return self.get(key)
-    }
-
-    /// Get the item at the index of the array
-    /// Negative values work back from teh length of the array,
+    /// Get the item with the key of the collection
+    /// For arrays, negative numbers work back from the length of the array,
     /// -1 for example will return the last objexct, -2 the second to last
-    public func get(index: Int) -> JSONMagic {
-        if let subData = self.value as? [AnyObject] where index < subData.count {
-            return JSONMagic(subData[index])
+    public func get<Key: Hashable>(key: Key) -> JSONMagic {
+        if let value = self.value as? [Key: AnyObject] {
+            return JSONMagic(value[key])
         }
+
+        if let value = self.value as? [AnyObject] {
+            if var index = key as? Int {
+                if index < 0 {
+                    index = value.count+index
+                }
+                if index >= 0 && index < value.count {
+                    return JSONMagic(value[index])
+                }
+            }
+        }
+
         return JSONMagic()
+    }
+
+}
+
+// TODO: add generic subscript once it's avalible in Swift 3.0
+// https://twitter.com/jckarter/status/700422476510023680
+
+extension JSONMagic {
+
+    /// Wraps `get(key)` allowing you to use `[String]`.
+    public subscript(key: String) -> JSONMagic {
+        return self.get(key)
     }
 
     /// Wraps `get(index)` allowing you to use `[Int]`.
     public subscript(index: Int) -> JSONMagic {
         return self.get(index)
     }
+
+}
+
+extension JSONMagic {
 
     /// Get the first item of the array
     public var first: JSONMagic {

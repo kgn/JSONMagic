@@ -83,6 +83,12 @@ if let data = serverResponse {
 let twitterUser = JSONMagic(data: serverResponse).get("user").get("accounts").first.get("user").value as? String
 ```
 
+Or, if you prefer subscripting :)
+
+``` Swift
+let twitterUser = JSONMagic(data: serverResponse)["user"]["accounts"][0]["user"].value as? String
+```
+
 `JSONMagic` handles all of this for you with method chaining. So you’re always working with a magical wrapper `JSONMagic` object that you can chain as long as you want, then just call `value` at the end to get the ending value and cast that to the final type you want.
 
 It’s super *loosie goosie* so doesn’t care about `nil` values going in, or anywhere in the chain.
@@ -93,11 +99,11 @@ It’s super *loosie goosie* so doesn’t care about `nil` values going in, or a
 let json = JSONMagic(data: serverResponse)
 
 json.get("user").get("name").value // David Keegan
-json.get("user").get("age").value // 30
+json["user"]["age"].value // 30
 
 let twitter = json.get("user").get("accounts").first
-twitter.get("name").value // twitter
-twitter.get("user").value // iamkgn
+twitter["name"].value // twitter
+twitter["user"].value // iamkgn
 
 let dribbble = json.get("user").get("accounts").get(1)
 dribbble.get("name").value // dribbble

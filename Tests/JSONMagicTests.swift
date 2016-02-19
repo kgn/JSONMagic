@@ -51,21 +51,21 @@ class JSONMagicTests: XCTestCase {
 
     func testFirst() {
         let twitter = self.json.get("user").get("accounts").first
-        XCTAssertEqual(twitter, self.json["user"]["accounts"][0])
+        XCTAssertEqual(twitter.value as? String, self.json["user"]["accounts"][0].value as? String)
         XCTAssertEqual(twitter.get("name").value as? String, "twitter")
         XCTAssertEqual(twitter.get("user").value as? String, "iamkgn")
     }
 
     func testLast() {
         let github = json.get("user").get("accounts").last
-        XCTAssertEqual(github, self.json["user"]["accounts"][-1])
+        XCTAssertEqual(github.value as? String, self.json["user"]["accounts"][-1].value as? String)
         XCTAssertEqual(github.get("name").value as? String, "github")
         XCTAssertEqual(github.get("user").value as? String, "kgn")
     }
 
     func testIndex() {
         let dribbble = json.get("user").get("accounts").get(1)
-        XCTAssertEqual(dribbble, self.json["user"]["accounts"][1])
+        XCTAssertEqual(dribbble.value as? String, self.json["user"]["accounts"][1].value as? String)
         XCTAssertEqual(dribbble.get("name").value as? String, "dribbble")
         XCTAssertEqual(dribbble.get("user").value as? String, "kgn")
     }
