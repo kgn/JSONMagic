@@ -79,6 +79,33 @@ extension JSONMagic {
 
 }
 
+// Loop
+// TODO: replace with CollectionType or SequenceType?
+// How do we handle break?
+extension JSONMagic {
+
+    public func each<Key: Hashable>(@noescape iterator: (key: Key, value: AnyObject) -> Void) {
+        guard let value = self.value as? [Key: AnyObject] else {
+            return
+        }
+
+        for (key, value) in value {
+            iterator(key: key, value: value)
+        }
+    }
+
+    public func each(@noescape iterator: (value: AnyObject) -> Void) {
+        guard let value = self.array else {
+            return
+        }
+
+        for value in value {
+            iterator(value: value)
+        }
+    }
+
+}
+
 // Value helpers
 extension JSONMagic {
 

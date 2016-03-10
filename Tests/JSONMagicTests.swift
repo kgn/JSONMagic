@@ -86,4 +86,11 @@ class JSONMagicTests: XCTestCase {
         XCTAssertNil(bad.get("user").value)
     }
 
+    func testLoop() {
+        print(self.json["user"]["accounts"].value)
+        self.json["user"]["accounts"].each { value in
+            print(value)
+        }
+    }
+
 }
