@@ -7,6 +7,8 @@
 //
 
 // TODO: implment Equatable
+// TODO: implment Sequence
+// TODO: implment Description
 
 public class JSONMagic {
 
@@ -27,29 +29,6 @@ public class JSONMagic {
         }
     }
     
-}
-
-// Keypath
-extension JSONMagic {
-
-    /// Paw.app style keypaths
-    /// Examples:
-    /// "company.employees[0].name" <- get the name of the first employee in the company
-    /// "company.employees[-1].name" <- get the name of the last employee in the company
-    public func keypath(keypath: String) -> JSONMagic {
-        var json = self
-        for dotPart in keypath.componentsSeparatedByString(".") {
-            for bracketPart in dotPart.componentsSeparatedByString("[") {
-                if let index = Int(bracketPart.stringByReplacingOccurrencesOfString("]", withString: "")) {
-                    json = json.get(index)
-                } else if bracketPart.isEmpty == false {
-                    json = json.get(bracketPart)
-                }
-            }
-        }
-        return json
-    }
-
 }
 
 // Get
@@ -75,6 +54,29 @@ extension JSONMagic {
         }
 
         return JSONMagic()
+    }
+    
+}
+
+// Keypath
+extension JSONMagic {
+
+    /// Paw.app style keypaths
+    /// Examples:
+    /// "company.employees[0].name" <- get the name of the first employee in the company
+    /// "company.employees[-1].name" <- get the name of the last employee in the company
+    public func keypath(keypath: String) -> JSONMagic {
+        var json = self
+        for dotPart in keypath.componentsSeparatedByString(".") {
+            for bracketPart in dotPart.componentsSeparatedByString("[") {
+                if let index = Int(bracketPart.stringByReplacingOccurrencesOfString("]", withString: "")) {
+                    json = json.get(index)
+                } else if bracketPart.isEmpty == false {
+                    json = json.get(bracketPart)
+                }
+            }
+        }
+        return json
     }
 
 }
@@ -107,9 +109,9 @@ extension JSONMagic {
     }
 
     // TODO: how to make this work with <Key: Hashable>
-//    public var dictionary: [String: AnyObject]? {
-//        return self.value as? [String: AnyObject]
-//    }
+    public var dictionary: [String: AnyObject]? {
+        return self.value as? [String: AnyObject]
+    }
 
 }
 
