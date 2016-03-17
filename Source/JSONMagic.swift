@@ -6,11 +6,10 @@
 //  Copyright © David Keegan. All rights reserved.
 //
 
-// TODO: implment Equatable
 // TODO: implment Sequence
-// TODO: implment Description
 
-public class JSONMagic {
+// MARK: -
+public struct JSONMagic {
 
     /// The value of the item
     public let value: AnyObject?
@@ -21,7 +20,7 @@ public class JSONMagic {
     }
 
     /// Create an instance with json data
-    public convenience init(data: NSData?) {
+    public init(data: NSData?) {
         if data != nil {
             self.init(try? NSJSONSerialization.JSONObjectWithData(data!, options: []))
         } else {
@@ -31,7 +30,55 @@ public class JSONMagic {
     
 }
 
-// Get
+// MARK: - Description
+extension JSONMagic: CustomStringConvertible {
+    public var description: String {
+        if self.value == nil {
+            // TODO: What's the best thing to print?
+            return "<No Value>"
+        }
+
+        return "\(self.value!)"
+    }
+}
+
+// MARK: - Equatable
+// TODO: add test cases
+extension JSONMagic: Equatable {}
+public func ==(lhs: JSONMagic, rhs: JSONMagic) -> Bool {
+    // TODO: is there a way to simplify this?
+    if lhs.value === rhs.value {
+        return true
+    }
+
+    if lhs.int == rhs.int {
+        return true
+    }
+
+    if lhs.float == rhs.float {
+        return true
+    }
+
+    if lhs.double == rhs.double {
+        return true
+    }
+
+    if lhs.string == rhs.string {
+        return true
+    }
+
+    if lhs.array == rhs.array {
+        return true
+    }
+
+    if lhs.dictionary == rhs.dictionary {
+        return true
+    }
+
+    return false
+}
+
+// MARK: - Get
 extension JSONMagic {
 
     /// Get the item with the key of the collection
@@ -58,11 +105,10 @@ extension JSONMagic {
     
 }
 
-// Keypath
+// MARK: - Keypath
 extension JSONMagic {
 
-    /// Paw.app style keypaths
-    /// Examples:
+    /// Paw.app style keypaths:
     /// "company.employees[0].name" <- get the name of the first employee in the company
     /// "company.employees[-1].name" <- get the name of the last employee in the company
     public func keypath(keypath: String) -> JSONMagic {
@@ -81,7 +127,7 @@ extension JSONMagic {
 
 }
 
-// Value helpers
+// MARK: - Value helpers
 extension JSONMagic {
 
     public var int: Int? {
@@ -115,25 +161,36 @@ extension JSONMagic {
 
 }
 
+// MARK: - Subscript
 // TODO: add generic subscript once it's avalible in Swift 3.0
 // https://twitter.com/jckarter/status/700422476510023680
-
-// Subscript
 extension JSONMagic {
 
-    /// Wraps `get(key)` allowing you to use `[String]`.
-    public subscript(key: String) -> JSONMagic {
-        return self.get(key)
-    }
-
-    /// Wraps `get(index)` allowing you to use `[Int]`.
+    /// Wraps `get` allowing you to use `[Int]`.
     public subscript(index: Int) -> JSONMagic {
         return self.get(index)
     }
 
+    /// Wraps `get` allowing you to use `[Float]`.
+    public subscript(index: Float) -> JSONMagic {
+        return self.get(index)
+    }
+
+    /// Wraps `get` allowing you to use `[Double]`.
+    public subscript(index: Double) -> JSONMagic {
+        return self.get(index)
+    }
+
+    /// Wraps `get` allowing you to use `[String]`.
+    public subscript(key: String) -> JSONMagic {
+        return self.get(key)
+    }
+
+    //TODO: support array and dictionary keys?
+
 }
 
-// First/Last
+// MARK: - First/Last
 extension JSONMagic {
 
     /// Get the first item of the array
