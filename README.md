@@ -126,5 +126,5 @@ bad.get("user").value // nil
 - [X] Documentation
 - [ ] AppleTV
 - [ ] AppleWatch
-- [ ] Prebuilt Frameworks
+- [X] Prebuilt Frameworks
 - [ ] Travis Test Matrix
