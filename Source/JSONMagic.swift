@@ -43,40 +43,41 @@ extension JSONMagic: CustomStringConvertible {
 }
 
 // MARK: - Equatable
+// TODO: fix comparisons
 // TODO: add test cases
-extension JSONMagic: Equatable {}
-public func ==(lhs: JSONMagic, rhs: JSONMagic) -> Bool {
-    // TODO: is there a way to simplify this?
-    if lhs.value === rhs.value {
-        return true
-    }
-
-    if lhs.int == rhs.int {
-        return true
-    }
-
-    if lhs.float == rhs.float {
-        return true
-    }
-
-    if lhs.double == rhs.double {
-        return true
-    }
-
-    if lhs.string == rhs.string {
-        return true
-    }
-
-    if lhs.array == rhs.array {
-        return true
-    }
-
-    if lhs.dictionary == rhs.dictionary {
-        return true
-    }
-
-    return false
-}
+//extension JSONMagic: Equatable {}
+//public func ==(lhs: JSONMagic, rhs: JSONMagic) -> Bool {
+//    // TODO: is there a way to simplify this?
+//    if lhs.value === rhs.value {
+//        return true
+//    }
+//
+//    if lhs.int == rhs.int {
+//        return true
+//    }
+//
+//    if lhs.float == rhs.float {
+//        return true
+//    }
+//
+//    if lhs.double == rhs.double {
+//        return true
+//    }
+//
+//    if lhs.string == rhs.string {
+//        return true
+//    }
+//
+//    if lhs.array == rhs.array {
+//        return true
+//    }
+//
+//    if lhs.dictionary == rhs.dictionary {
+//        return true
+//    }
+//
+//    return false
+//}
 
 // MARK: - Get
 extension JSONMagic {
