@@ -131,6 +131,10 @@ extension JSONMagic {
 // MARK: - Value helpers
 extension JSONMagic {
 
+    public var bool: Bool? {
+        return self.value as? Bool
+    }
+    
     public var int: Int? {
         return self.value as? Int
     }
