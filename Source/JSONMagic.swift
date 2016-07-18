@@ -20,9 +20,9 @@ public struct JSONMagic {
     }
 
     /// Create an instance with json data
-    public init(data: NSData?) {
+    public init(data: Data?) {
         if data != nil {
-            self.init(try? NSJSONSerialization.JSONObjectWithData(data!, options: []))
+            self.init(try? JSONSerialization.jsonObject(with: data!, options: []))
         } else {
             self.init()
         }
@@ -85,7 +85,7 @@ extension JSONMagic {
     /// Get the item with the key of the collection
     /// For arrays, negative numbers work back from the length of the array,
     /// -1 for example will return the last objexct, -2 the second to last
-    public func get<Key: Hashable>(key: Key) -> JSONMagic {
+    public func get<Key: Hashable>(_ key: Key) -> JSONMagic {
         if let value = self.value as? [Key: AnyObject] {
             return JSONMagic(value[key])
         }
@@ -112,11 +112,11 @@ extension JSONMagic {
     /// Paw.app style keypaths:
     /// "company.employees[0].name" <- get the name of the first employee in the company
     /// "company.employees[-1].name" <- get the name of the last employee in the company
-    public func keypath(keypath: String) -> JSONMagic {
+    public func keypath(_ keypath: String) -> JSONMagic {
         var json = self
-        for dotPart in keypath.componentsSeparatedByString(".") {
-            for bracketPart in dotPart.componentsSeparatedByString("[") {
-                if let index = Int(bracketPart.stringByReplacingOccurrencesOfString("]", withString: "")) {
+        for dotPart in keypath.components(separatedBy: ".") {
+            for bracketPart in dotPart.components(separatedBy: "[") {
+                if let index = Int(bracketPart.replacingOccurrences(of: "]", with: "")) {
                     json = json.get(index)
                 } else if bracketPart.isEmpty == false {
                     json = json.get(bracketPart)

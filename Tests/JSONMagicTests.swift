@@ -33,7 +33,7 @@ class JSONMagicTests: XCTestCase {
     ]
 
     lazy var json: JSONMagic = {
-        let data = try! NSJSONSerialization.dataWithJSONObject(self.data, options: [])
+        let data = try! JSONSerialization.data(withJSONObject: self.data, options: [])
         return JSONMagic(data: data)
     }()
 
