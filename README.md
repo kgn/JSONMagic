@@ -2,6 +2,7 @@
 
 `JSONMagic` makes it easy to traverse and parse JSON in Swift.
 
+[![Swift 3](http://img.shields.io/badge/Swift-3-orange.svg)]()
 [![Release](https://img.shields.io/github/release/kgn/JSONMagic.svg)](/releases)
 [![License](http://img.shields.io/badge/License-MIT-lightgrey.svg)](/LICENSE)
 
