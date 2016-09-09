@@ -169,7 +169,7 @@ extension JSONMagic: CustomStringConvertible {
 // MARK: - Equatable
 extension JSONMagic: Equatable {}
 public func ==(lhs: JSONMagic, rhs: JSONMagic) -> Bool {
-    let lhv = lhs.value,rhv = rhs.value
+    let lhv = lhs.value, rhv = rhs.value
     if lhv == nil && rhv == nil {
         return true
     } else if lhv is Bool && rhv is Bool && lhv as? Bool == rhv as? Bool {
