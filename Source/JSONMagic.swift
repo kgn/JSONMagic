@@ -8,14 +8,29 @@
 
 // TODO: implment Sequence
 
+// TODO: can the values be limited 
+// to just these supported JSON ones?
+//public protocol JSONValue {}
+//extension Bool: JSONValue {}
+//extension Int: JSONValue {}
+//extension Float: JSONValue {}
+//extension Double: JSONValue {}
+//extension CGFloat: JSONValue {}
+//extension String: JSONValue {}
+//extension Array: JSONValue {}
+//extension Dictionary: JSONValue {}
+
+public typealias JSONArray = [Any]
+public typealias JSONDictionary = [String: Any]
+
 // MARK: -
 public struct JSONMagic {
 
     /// The value of the item
-    public let value: AnyObject?
-
+    public let value: Any?
+    
     /// Create an instance with any object
-    public init(_ value: AnyObject? = nil) {
+    public init(_ value: Any? = nil) {
         self.value = value
     }
 
@@ -30,78 +45,22 @@ public struct JSONMagic {
     
 }
 
-// MARK: - Description
-extension JSONMagic: CustomStringConvertible {
-    public var description: String {
-        if self.value == nil {
-            // TODO: What's the best thing to print?
-            return "<No Value>"
-        }
-
-        return "\(self.value!)"
-    }
-}
-
-// MARK: - Equatable
-// TODO: fix comparisons
-// TODO: add test cases
-//extension JSONMagic: Equatable {}
-//public func ==(lhs: JSONMagic, rhs: JSONMagic) -> Bool {
-//    // TODO: is there a way to simplify this?
-//    if lhs.value === rhs.value {
-//        return true
-//    }
-//
-//    if lhs.int == rhs.int {
-//        return true
-//    }
-//
-//    if lhs.float == rhs.float {
-//        return true
-//    }
-//
-//    if lhs.double == rhs.double {
-//        return true
-//    }
-//
-//    if lhs.string == rhs.string {
-//        return true
-//    }
-//
-//    if lhs.array == rhs.array {
-//        return true
-//    }
-//
-//    if lhs.dictionary == rhs.dictionary {
-//        return true
-//    }
-//
-//    return false
-//}
-
 // MARK: - Get
 extension JSONMagic {
 
-    /// Get the item with the key of the collection
-    /// For arrays, negative numbers work back from the length of the array,
+    /// Get the item with a given index, if one exists.
+    /// Negative numbers work back from the length of the array,
     /// -1 for example will return the last objexct, -2 the second to last
-    public func get<Key: Hashable>(_ key: Key) -> JSONMagic {
-        if let value = self.value as? [Key: AnyObject] {
-            return JSONMagic(value[key])
+    public func get(_ index: Int) -> JSONMagic {
+        guard let array = self.array, index < array.count else {
+            return JSONMagic()
         }
-
-        if let value = self.array {
-            if var index = key as? Int {
-                if index < 0 {
-                    index = value.count+index
-                }
-                if index >= 0 && index < value.count {
-                    return JSONMagic(value[index])
-                }
-            }
-        }
-
-        return JSONMagic()
+        return JSONMagic(array[index < 0 ? array.count+index : index])
+    }
+    
+    /// Get the item with a given key, if one exists.
+    public func get(_ key: String) -> JSONMagic {
+        return JSONMagic(self.dictionary?[key])
     }
     
 }
@@ -155,43 +114,28 @@ extension JSONMagic {
         return self.value as? String
     }
 
-    public var array: [AnyObject]? {
-        return self.value as? [AnyObject]
+    public var array: JSONArray? {
+        return self.value as? JSONArray
     }
 
-    // TODO: how to make this work with <Key: Hashable>
-    public var dictionary: [String: AnyObject]? {
-        return self.value as? [String: AnyObject]
+    public var dictionary: JSONDictionary? {
+        return self.value as? JSONDictionary
     }
 
 }
 
 // MARK: - Subscript
-// TODO: add generic subscript once it's avalible in Swift 3.0
-// https://twitter.com/jckarter/status/700422476510023680
 extension JSONMagic {
 
-    /// Wraps `get` allowing you to use `[Int]`.
+    /// Subscript for indices
     public subscript(index: Int) -> JSONMagic {
         return self.get(index)
     }
 
-    /// Wraps `get` allowing you to use `[Float]`.
-    public subscript(index: Float) -> JSONMagic {
-        return self.get(index)
-    }
-
-    /// Wraps `get` allowing you to use `[Double]`.
-    public subscript(index: Double) -> JSONMagic {
-        return self.get(index)
-    }
-
-    /// Wraps `get` allowing you to use `[String]`.
+    /// Subscript for keys
     public subscript(key: String) -> JSONMagic {
         return self.get(key)
     }
-
-    //TODO: support array and dictionary keys?
 
 }
 
@@ -208,4 +152,38 @@ extension JSONMagic {
         return self.get(-1)
     }
     
+}
+
+// MARK: - Description
+extension JSONMagic: CustomStringConvertible {
+    public var description: String {
+        if self.value == nil {
+            // TODO: What's the best thing to print?
+            return "<No Value>"
+        }
+        
+        return "\(self.value!)"
+    }
+}
+
+// MARK: - Equatable
+extension JSONMagic: Equatable {}
+public func ==(lhs: JSONMagic, rhs: JSONMagic) -> Bool {
+    let lhv = lhs.value,rhv = rhs.value
+    if lhv == nil && rhv == nil {
+        return true
+    } else if lhv is Bool && rhv is Bool && lhv as? Bool == rhv as? Bool {
+        return true
+    } else if lhv is Integer && rhv is Integer && lhv as? Int == rhv as? Int {
+        return true
+    } else if lhv is FloatingPoint && rhv is FloatingPoint && lhv as? Double == rhv as? Double {
+        return true
+    } else if lhv is String && rhv is String && lhv as? String == rhv as? String {
+        return true
+    } else if let lha = lhv as? JSONArray, let rha = rhv as? JSONArray {
+        return NSArray(array: lha).isEqual(to: rha)
+    } else if let lhd = lhv as? JSONDictionary, let rhd = rhv as? JSONDictionary {
+        return NSDictionary(dictionary: lhd).isEqual(to: rhd)
+    }
+    return false
 }
