@@ -123,7 +123,7 @@ bad.get("user").value // nil
 - [X] CocoaPods
 - [X] Description
 - [X] Documentation
-- [ ] AppleTV
-- [ ] AppleWatch
+- [X] AppleTV
+- [X] AppleWatch
 - [X] Prebuilt Frameworks
 - [ ] Travis Test Matrix
