@@ -9,12 +9,12 @@ env:
     - DESTINATION="OS=10.0, name=Apple TV 1080p" SCHEME=$PROJECT-tvOS SDK=appletvsimulator TEST=test
     - DESTINATION="OS=3.0, name=Apple Watch - 42mm" SCHEME=$PROJECT-watchOS SDK=watchsimulator TEST=
 
-  script:
-    - xcodebuild $TEST -project $PROJECT.xcodeproj -scheme $SCHEME -sdk $SDK -destination "$DESTINATION"
+script:
+  - xcodebuild $TEST -project $PROJECT.xcodeproj -scheme $SCHEME -sdk $SDK -destination "$DESTINATION"
 
-  before_deploy:
-    - carthage build --no-skip-current
-    - carthage archive $PROJECT
+before_deploy:
+  - carthage build --no-skip-current
+  - carthage archive $PROJECT
 
 deploy:
   provider: releases
