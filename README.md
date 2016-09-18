@@ -86,7 +86,13 @@ Or, if you prefer subscripting :)
 let twitterUser = JSONMagic(data: serverResponse)["user"]["accounts"][0]["user"].string
 ```
 
-`JSONMagic` handles all of this for you with method chaining. So you’re always working with a magical wrapper `JSONMagic` object that you can chain as long as you want, then just call `value` at the end to get the ending value and cast that to the final type you want.
+It even works with [Paw](https://paw.cloud) key paths.
+
+``` Swift
+let twitterUser = JSONMagic(data: serverResponse).keypath("user.accounts.0.user").string
+```
+
+`JSONMagic` handles all of this for you with method chaining. So you’re always working with a magical wrapper `JSONMagic` object that you can chain as long as you want, then just call `value` at the end to get the ending value and cast that to the final type you want. There are helpers for all the JSON data types too: `.bool`, `.int`, `.float`, `.double`, `.string`, `.array` and `.dictionary`.
 
 It’s super *loosie goosie* so doesn’t care about `nil` values going in, or anywhere in the chain.
 
