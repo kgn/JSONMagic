@@ -62,10 +62,10 @@ Parsing this can take a bunch of nested if statements in Swift to cast things to
 ``` Swift
 let twitterUser: String?
 if let data = serverResponse {
-    if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject] {
-        if let user = json?["user"] as? [String: AnyObject] {
-            if let accounts = user["accounts"] as? [AnyObject] {
-                if let twitter = accounts.first as? [String: AnyObject] {
+    if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: Any] {
+        if let user = json?["user"] as? [String: Any] {
+            if let accounts = user["accounts"] as? [Any] {
+                if let twitter = accounts.first as? [String: Any] {
                     twitterUser = twitter["user"] as? String
                 }
             }
@@ -77,13 +77,13 @@ if let data = serverResponse {
 ### After
 
 ``` Swift
-let twitterUser = JSONMagic(data: serverResponse).get("user").get("accounts").first.get("user").value as? String
+let twitterUser = JSONMagic(data: serverResponse).get("user").get("accounts").first.get("user").string
 ```
 
 Or, if you prefer subscripting :)
 
 ``` Swift
-let twitterUser = JSONMagic(data: serverResponse)["user"]["accounts"][0]["user"].value as? String
+let twitterUser = JSONMagic(data: serverResponse)["user"]["accounts"][0]["user"].string
 ```
 
 `JSONMagic` handles all of this for you with method chaining. So you’re always working with a magical wrapper `JSONMagic` object that you can chain as long as you want, then just call `value` at the end to get the ending value and cast that to the final type you want.
@@ -95,8 +95,8 @@ It’s super *loosie goosie* so doesn’t care about `nil` values going in, or a
 ``` Swift
 let json = JSONMagic(data: serverResponse)
 
-json.get("user").get("name").value // David Keegan
-json["user"]["age"].value // 30
+json.get("user").get("name").string // David Keegan
+json["user"]["age"].integer // 30
 
 let twitter = json.get("user").get("accounts").first
 twitter["name"].value // twitter
