@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'JSONMagic'
-  spec.version = '0.7'
+  spec.version = '0.7.5'
   spec.authors = {'David Keegan' => 'me@davidkeegan.com'}
   spec.homepage = 'https://github.com/kgn/JSONMagic'
   spec.summary = 'JSONMagic makes it easy to traverse and parse json in Swift.'  
